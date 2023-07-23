@@ -46,3 +46,26 @@ element = [3, 5, 1];
 console.log(element.length);      // Prints 3
 // The .match method will not work for an array type
 //console.log(element.match(5));  // Error: Property 'match' does not exist on type 'number[]'.
+
+// Union of literal types - You can declare a union type consisting of literal types, such as string literals, number literals or boolean literals. These will create union types that are more specific and have distinct states
+// This is a union of string literal types
+type RPS = 'rock' | 'paper' | 'scissors' ;
+const play = (choice: RPS): void => {
+    console.log('You: ', choice);
+    let result: string = '';
+    switch (choice) {
+        case 'rock':
+            result = 'paper';
+            break;
+        case 'paper':
+            result = 'scissors';
+            break;
+        case 'scissors':
+            result = 'rock';
+            break;
+    }
+    console.log('Me: ', result);
+}
+const number = Math.floor(Math.random()*3);
+let rpsChoices: [RPS, RPS, RPS] = ['rock', 'paper', 'scissors'];
+play(rpsChoices[number]);

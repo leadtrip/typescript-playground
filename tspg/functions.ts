@@ -1,9 +1,9 @@
 // parameter annotations - functions can be given type annotations too ==============================================
-function greet(noun: string) {
+function greetYou(noun: string) {
     console.log(`Hello, ${noun}!`);
 }
 
-greet('World'); // Prints: Hello, World
+greetYou('World'); // Prints: Hello, World
 // greet(2020); can't do this
 
 // specifying a ? after the parameter name makes it optional ==============================================
