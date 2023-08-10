@@ -35,6 +35,8 @@ const sumAllNumbers = (...numberList: number[]): number => {
     return sum;
 }
 
+sumAllNumbers(29, 328, 8337, 182, 231);
+
 // spread operator with a tuple ==============================================
 function modulo(dividend: number, divisor: number): number {
     return dividend % divisor;

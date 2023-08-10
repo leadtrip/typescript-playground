@@ -1,3 +1,44 @@
+// this function specifies any type for the input argument and the return type is inferred by typescript
+function basic (a: any) {
+    return 'b'
+}
+
+const add = (a: number, b: number) => {
+    return a + b;
+}
+
+// now we've specified the argument and return types
+function isGt1(a : number) : boolean {
+    return a > 1;
+}
+
+// storing function types in a type alias ===========================================
+type NumArgBoolRet = (a: number) => boolean;        // a function return type
+
+const gtThan1: NumArgBoolRet = function (        // here we make use of the NumArgBoolRet type defined above & we've fully typed the function, verbose
+    a: number                                    // now, gtThan1 can be called wherever
+): boolean {
+    return a > 1;
+}
+
+const inp = 2;
+console.log('%d is greater than 1 %s', inp, gtThan1(inp))   // calling gtThan1
+
+const lt1: NumArgBoolRet = function (a) {return a < 1}  // again making use of the NumArgBoolRet type but letting typescript infer the arg and return types
+console.log("%d is less than 1 %s", inp, lt1(inp) )                     // and calling lt1
+
+// you can also pass the function return type as a parameter
+function myFunky(func: NumArgBoolRet) : boolean {
+    return func(29);
+}
+myFunky((a) => a % 2 == 0);
+
+// and as a return type
+function myFunky2(): NumArgBoolRet {
+    return (a) => a % 3 == 0;
+}
+// =============================================================================================
+
 // parameter annotations - functions can be given type annotations too ==============================================
 function greetYou(noun: string) {
     console.log(`Hello, ${noun}!`);
@@ -33,3 +74,45 @@ function factOrFiction() {
 function trueOrFalse(value: number): boolean {
     return value > 0;
 }
+
+// Arrow function vs function keyword ======================================================
+// ES5: Without arrow function
+const getResultKeyword = function(username: string, points: number) {
+    return username + ' scored ' + points + ' points!';
+};
+
+// ES6: With arrow function
+const getResultArrow = (username: string, points: number): string => {
+    return `${ username } scored ${ points } points!`;
+}
+
+getResultKeyword('bob', 28);
+getResultArrow('deb', 38);
+
+// arrow function without parameter
+const printHi =()=> console.log('Hi')
+
+// curly braces aren't required around function body if there's a single statement
+const singleStatmentFunc = (a: number, b: number) => a-b;
+
+// an arrow function can be a class property
+class Badger {
+    name: string;
+    age: number
+
+    constructor(n: string, a: number) {
+        this.name = n;
+        this.age = a;
+    }
+    toString = () => console.log("Name: " + this.name + " Age: " + this.age)
+}
+
+const barry = new Badger('Barry', 1)
+barry.toString()
+
+const anObj = {
+    blik: '291',
+    dzan: ()=> console.log(this.blik)
+}
+
+anObj.dzan()

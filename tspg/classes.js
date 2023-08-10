@@ -39,3 +39,16 @@ class Phone {
 }
 const phoneY = new Phone();
 console.log(phoneY);
+// ========================================================
+// Inheritance
+class BaseClass {
+    constructor() {
+        this.k = 2;
+    }
+}
+class ChildClass extends BaseClass {
+    constructor() {
+        super();
+        console.log(this.k); // super must be called before accessing any parent class fields
+    }
+}
