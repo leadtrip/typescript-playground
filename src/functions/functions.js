@@ -81,8 +81,3 @@ class Badger {
 }
 const barry = new Badger('Barry', 1);
 barry.toString();
-const anObj = {
-    blik: '291',
-    dzan: () => console.log(this.blik)
-};
-anObj.dzan();

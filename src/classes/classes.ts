@@ -1,6 +1,6 @@
 // ========================================================
 // Basic class using built in types, range and default
-class Planet {
+export class Planet {
     name: string
     knownLife: boolean
     lightYearsFromEarth: number
@@ -43,7 +43,7 @@ console.log(bob)
 
 // ========================================================
 // Constructor
-class Phone {
+export class Phone {
     name: string;
     model: string;
 
@@ -51,6 +51,8 @@ class Phone {
         this.name = n;
         this.model = m;
     }
+
+    hasBeenSetup (): boolean { return this.name != 'XXX' }
 }
 
 const phoneY = new Phone()

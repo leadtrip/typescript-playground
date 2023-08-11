@@ -3,19 +3,19 @@ function basic (a: any) {
     return 'b'
 }
 
-const add = (a: number, b: number) => {
+export const add = (a: number, b: number) => {
     return a + b;
 }
 
 // now we've specified the argument and return types
-function isGt1(a : number) : boolean {
+export function isGt1(a : number) : boolean {
     return a > 1;
 }
 
 // storing function types in a type alias ===========================================
 type NumArgBoolRet = (a: number) => boolean;        // a function return type
 
-const gtThan1: NumArgBoolRet = function (        // here we make use of the NumArgBoolRet type defined above & we've fully typed the function, verbose
+export const gtThan1: NumArgBoolRet = function (        // here we make use of the NumArgBoolRet type defined above & we've fully typed the function, verbose
     a: number                                    // now, gtThan1 can be called wherever
 ): boolean {
     return a > 1;
@@ -34,7 +34,7 @@ function myFunky(func: NumArgBoolRet) : boolean {
 myFunky((a) => a % 2 == 0);
 
 // and as a return type
-function myFunky2(): NumArgBoolRet {
+export function myFunky2(): NumArgBoolRet {         // NO IDEA WHAT'S GOING ON HERE !!!!!!!
     return (a) => a % 3 == 0;
 }
 // =============================================================================================
@@ -55,8 +55,10 @@ function greetOpt(name?: string) {
 greetOpt();
 
 // we can also supply defaults for parameters ==============================================
-function exponentiation(power = 1) {
-    console.log(4 ** power);
+export function exponentiation(power = 1) {
+    const res = 4 ** power
+    console.log(res);
+    return res;
 }
 
 exponentiation(); // Prints: 4
@@ -96,7 +98,7 @@ const printHi =()=> console.log('Hi')
 const singleStatmentFunc = (a: number, b: number) => a-b;
 
 // an arrow function can be a class property
-class Badger {
+export class Badger {
     name: string;
     age: number
 
@@ -104,15 +106,8 @@ class Badger {
         this.name = n;
         this.age = a;
     }
-    toString = () => console.log("Name: " + this.name + " Age: " + this.age)
+    toString = () => { return "Name: " + this.name + " Age: " + this.age }
 }
 
 const barry = new Badger('Barry', 1)
 barry.toString()
-
-const anObj = {
-    blik: '291',
-    dzan: ()=> console.log(this.blik)
-}
-
-anObj.dzan()

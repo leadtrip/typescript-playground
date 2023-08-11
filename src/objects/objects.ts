@@ -28,15 +28,15 @@ function greet(human: Human) {
 
 // ========================== Property Modifiers ==========================
 // Optional properties - use a question mark after the property name
-type Shape = {}
-interface PaintOptions {
+export type Shape = { name: string }
+export interface PaintOptions {
     shape: Shape;
     xPos?: number;
     yPos?: number;
 }
 
 // Default values - we can supply default values for optional properties
-function paintShape({shape, xPos = 0, yPos = 0}: PaintOptions) {}
+export function paintShape({shape, xPos = 0, yPos = 0}: PaintOptions) {}
 
 // Read only properties
 interface Home {
