@@ -1,2 +1,5 @@
 # Project exclude paths
 /src/anything.js
+node_modules
+.idea
+out
