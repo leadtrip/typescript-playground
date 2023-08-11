@@ -1,4 +1,9 @@
-// type aliases are used to provide names to type literals
+/** type aliases are used to provide names to type literals, a type literal looks like...
+ {
+    x: number
+    y: number
+ }
+**/
 
 // Primitive type
 type SanitizedInput = string;

@@ -6,12 +6,13 @@ typedAnswer = '100';    // string
 typedAnswer = 100;      // or number
 
 // Union type narrowing
-// you can help TypeScript infer the correct variable type using type narrowing. To narrow a variable to a specific type, implement a type guard. Use the typeof operator with the variable name and compare it with the type you expect for the variable
+// you can help TypeScript infer the correct variable type using type narrowing. To narrow a variable to a specific type, implement a type guard.
+// Use the typeof operator with the variable name and compare it with the type you expect for the variable
 const choices: [string, string] = ['NO', 'YES'];
 const processAnswer = (answer: number | boolean) => {
     if (typeof answer === 'number') {
         console.log(choices[answer]);
-    } else if (typeof answer === 'boolean') {
+    } else {
         if (answer) {
             console.log(choices[1]);
         } else {

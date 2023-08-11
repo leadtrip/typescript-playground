@@ -28,3 +28,26 @@ export interface TeslaModelS {
 export function buildTeslaModelS (teslaObj: TeslaModelS) {
 }
 
+class MyTeslaModelS implements TeslaModelS {
+    getRemCharging(): number {
+        return 0;
+    }
+
+    getTyrePressure(): number {
+        return 0;
+    }
+
+    constructor(length: number, seatingCapacity: number, wheelbase: number, width: number) {
+        this.length = length;
+        this.seatingCapacity = seatingCapacity;
+        this.wheelbase = wheelbase;
+        this.width = width;
+    }
+
+    readonly length: number;
+    seatingCapacity: number;
+    readonly wheelbase: number;
+    readonly width: number;
+}
+
+let myTes = new MyTeslaModelS(1234, 5, 1022, 500)
