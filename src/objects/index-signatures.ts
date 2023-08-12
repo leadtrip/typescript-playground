@@ -19,7 +19,7 @@ type Ph = {
     number: string
 }
 
-type IndPhone = {           // slightly more complex type where key is string and value is a Ph object
+type IndPhone = {           // slightly more complex index signature type where key is string and value is a Ph object
     [k: string]: Ph
 }
 
