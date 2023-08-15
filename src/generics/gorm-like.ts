@@ -1,5 +1,3 @@
-import {valueOf} from "jest";
-
 const laptops: Laptop[] = [
     {id: 1, screenSize: 15},
     {id: 2, screenSize: 18},
@@ -27,6 +25,8 @@ interface GormEntity {
     id?: number;
 }
 
+type WithId = Required<GormEntity>
+
 class Laptop implements GormEntity {
     constructor( public id: number, public screenSize: number ) {}
 }
@@ -41,25 +41,20 @@ export function save<T extends GormEntity>(entity: T, tableName: string) : T {
     }
     else {
         entity.id = max(tableName) + 1
-        console.log(`Creating new ${tableName} with id ${entity.id}`)
+        console.log(`Creating new row in ${tableName} with id ${entity.id}`)
         getTable(tableName).push(entity)
     }
     return entity
 }
 
-export function find<T extends GormEntity>(id: number, tableName: string) {
+export function find(id: number, tableName: string) {
     return getTable(tableName).find((entity) => entity.id == id)
 }
 
 export function max(tableName: string): number {
-    const ids : number[] = getTable(tableName)
-        .map(o => { return o.id })
-        .filter((id) => id !== undefined);
-
-    return Math.max(...ids)
-}
-
-const isGormEntity = (value: GormEntity | undefined): value is GormEntity => {
-    return !!value;
+    return  getTable(tableName)
+        .filter((entity) : entity is WithId => !!entity.id)
+        .reduce((prev, current) => { return prev.id > current.id ? prev : current }).id
+        ;
 }
 
