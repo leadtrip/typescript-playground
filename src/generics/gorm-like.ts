@@ -17,10 +17,6 @@ const db: Database = {
     'keyboards': keyboards
 }
 
-function getTable(tableName: string) : GormEntity[]{
-    return db[tableName]
-}
-
 interface GormEntity {
     id?: number;
 }
@@ -40,7 +36,7 @@ export function save<T extends GormEntity>(entity: T, tableName: string) : T {
         // update some stuff
     }
     else {
-        entity.id = max(tableName) + 1
+        entity.id = maxId(tableName) + 1
         console.log(`Creating new row in ${tableName} with id ${entity.id}`)
         getTable(tableName).push(entity)
     }
@@ -51,10 +47,13 @@ export function find(id: number, tableName: string) {
     return getTable(tableName).find((entity) => entity.id == id)
 }
 
-export function max(tableName: string): number {
+export function maxId(tableName: string): number {
     return  getTable(tableName)
         .filter((entity) : entity is WithId => !!entity.id)
-        .reduce((prev, current) => { return prev.id > current.id ? prev : current }).id
-        ;
+        .reduce((prev, current) => { return prev.id > current.id ? prev : current }).id;
+}
+
+function getTable(tableName: string) : GormEntity[]{
+    return db[tableName]
 }
 
