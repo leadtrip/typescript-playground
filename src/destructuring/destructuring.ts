@@ -52,3 +52,16 @@ export function arrayRestDestructuring() {
     console.log(t)
     console.log(others)
 }
+
+export function spreadExercise() {
+    const externalData = {name: 'bob', age: 100}
+
+    const anotherData =
+        {
+            ...externalData,
+            mongoose: 'okay',
+            twister: 1023
+        }
+
+    console.log(anotherData)
+}

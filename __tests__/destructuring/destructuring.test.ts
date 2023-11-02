@@ -2,7 +2,7 @@ import {
     arrayDestructuring, arrayRestDestructuring,
     fullObjectDestructure,
     partialObjectDestructure,
-    restObjectDestructure
+    restObjectDestructure, spreadExercise
 } from "../../src/destructuring/destructuring";
 
 
@@ -24,4 +24,8 @@ test('arrayDestructuring', () => {
 
 test('arrayRestDestructuring', () => {
     arrayRestDestructuring();
+})
+
+test('spreadExercise', () => {
+    spreadExercise();
 })
