@@ -111,3 +111,17 @@ export class Badger {
 
 const barry = new Badger('Barry', 1)
 barry.toString()
+
+export const getDate = (): number => Date.now()
+
+export const echo = (thing: string) => console.log(thing);
+
+export const sub = (a: number, b: number) => a - b;
+
+interface Person {
+    name: string;
+    age: number;
+    created: Date;
+}
+
+export const newPerson = (n: string, a: number): Person => { return {name: n, age: a, created: new Date()} }

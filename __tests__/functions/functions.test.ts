@@ -1,4 +1,4 @@
-import {add, Badger, exponentiation, gtThan1, isGt1, myFunky2} from "../../src/functions/functions";
+import {add, Badger, exponentiation, gtThan1, isGt1, myFunky2, newPerson} from "../../src/functions/functions";
 
 test('add', () => {
     expect(add(5, 6)).toEqual(11);
@@ -25,3 +25,11 @@ test('Badger class', () => {
 
     expect(barry.toString()).toEqual(`Name: ${name} Age: ${age}`)
 });
+
+
+test('newPerson', () => {
+    const name = 'Paul';
+    const age = 38;
+
+    expect(newPerson(name, age).created).toBeTruthy()
+})
